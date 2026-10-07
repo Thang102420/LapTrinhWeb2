@@ -1,4 +1,4 @@
-using APIdemo.Data;
+﻿using APIdemo.Data;
 using APIdemo.DTOs;
 using APIdemo.Models;
 using HouseRentalAPI.DTOs;
@@ -27,6 +27,7 @@ namespace APIdemo.Controllers
                 .Select(u => new UsersDTO.UserResponseDto
                 {
                     Id = u.Id,
+                    FullName = u.FullName,
                     Username = u.Username,
                     Email = u.Email,
                     Role = u.Role,
@@ -46,6 +47,7 @@ namespace APIdemo.Controllers
                 .Select(u => new UsersDTO.UserResponseDto
                 {
                     Id = u.Id,
+                    FullName = u.FullName,
                     Username = u.Username,
                     Email = u.Email,
                     Role = u.Role,
@@ -76,11 +78,13 @@ namespace APIdemo.Controllers
 
             var user = new User
             {
+                FullName = dto.Username,
                 Username = dto.Username,
                 Email = dto.Email,
                 PasswordHash = hash,
                 PasswordSalt = salt,
                 Role = "Tenant",
+                IsActive = true,
                 CreatedAt = DateTime.UtcNow
             };
 
@@ -93,6 +97,7 @@ namespace APIdemo.Controllers
                 new UsersDTO.UserResponseDto
                 {
                     Id = user.Id,
+                    FullName = user.FullName,
                     Username = user.Username,
                     Email = user.Email,
                     Role = user.Role,
@@ -122,6 +127,7 @@ namespace APIdemo.Controllers
             return Ok(new UsersDTO.UserResponseDto
             {
                 Id = user.Id,
+                FullName = user.FullName,
                 Username = user.Username,
                 Email = user.Email,
                 Role = user.Role,

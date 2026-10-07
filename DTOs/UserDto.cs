@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace HouseRentalAPI.DTOs
@@ -40,6 +40,9 @@ namespace HouseRentalAPI.DTOs
         {
             // ID của User
             public int Id { get; set; }
+
+            // Họ và tên
+            public string? FullName { get; set; }
 
             // Username
             public string Username { get; set; } = string.Empty;
